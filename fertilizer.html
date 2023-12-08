@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Predict Fertilizer</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #fff;
+        margin: 0;
+        padding: 0;
+        opacity: 0.7;
+        height: 100vh;
+      }
+
+      h1 {
+        text-align: center;
+        padding: 20px;
+        margin-top: -15rem;
+        font-size: 3rem;
+      }
+
+      .container {
+        height: 64%;
+        margin-top: 20px;
+      }
+
+      form {
+        background-color: #a8df8e;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        margin: 0 auto;
+        box-shadow: 12px 12px 2px 1px #eaf8da;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      input[type="text"] {
+        width: 94%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      button[type="submit"] {
+        display: block;
+        width: 100%;
+        background-color: #f3fde8;
+        color: black;
+        font-weight: bold;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      h2 {
+        margin-top: 20px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="svg">
+      <img
+        src="plant.png"
+        alt="air_index"
+        style="
+          display: block;
+          margin-left: 0 auto;
+          margin-top: 5px;
+          max-height: 15rem;
+        "
+      />
+    </div>
+    <h1>Predict Fertilizer</h1>
+    <form method="POST" action="/predict_fertilizer">
+      <label for="Temperature">Temperature:</label>
+      <input type="text" name="Temperature" required /><br />
+
+      <label for="Humidity">Humidity:</label>
+      <input type="text" name="Humidity" required /><br />
+
+      <label for="Moisture">Moisture:</label>
+      <input type="text" name="Moisture" required /><br />
+
+      <label for="Soil_Type">Soil Type:</label>
+      <select
+        style="
+          display: block;
+          width: 10rem;
+          height: 30px;
+          margin-top: 5rem;
+          max-height: 15rem;
+        "
+        name="Soil_Type"
+        required
+      >
+        <option value="Black">Black</option>
+        <option value="Clayey">Clayey</option>
+        <option value="Loamy">Loamy</option>
+        <option value="Red">Red</option>
+        <option value="Other">Other</option></select
+      ><br />
+
+      <label for="Crop_Type">Crop Type: </label>
+      <select
+        style="
+          display: block;
+          width: 10rem;
+          height: 30px;
+          margin-top: 5px;
+          max-height: 15rem;
+        "
+        name="Crop_Type"
+        required
+      >
+        <option value="Barley">Barley</option>
+        <option value="Cotton">Cotton</option>
+        <option value="Ground Nuts">Ground Nuts</option>
+        <option value="Maize">Maize</option>
+        <option value="Millets">Millets</option>
+        <option value="Oil seeds">Oil seeds</option>
+        <option value="Paddy">Paddy</option>
+        <option value="Pulses">Pulses</option>
+        <option value="Sugarcane">Sugarcane</option>
+        <option value="Tobacco">Tobacco</option>
+        <option value="wheat">wheat</option></select
+      ><br />
+
+      <label for="Nitrogen">Nitrogen:</label>
+      <input type="text" name="Nitrogen" required /><br />
+
+      <label for="Potassium">Potassium:</label>
+      <input type="text" name="Potassium" required /><br />
+
+      <label for="Phosphorus">Phosphorus:</label>
+      <input type="text" name="Phosphorus" required /><br />
+
+      <button type="submit">Predict</button>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const output = "{{ output }}";
+        if (output !== "") {
+          Swal.fire({
+            title: "Power Prediction",
+            text: `PowerAll: ${output}`,
+            icon: "success",
+            confirmButtonText: "OK",
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

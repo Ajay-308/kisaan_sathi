@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Soil Type Classifier Result</title>
+  </head>
+  <style></style>
+  <body>
+    <h1>Soil Type Classification Result</h1>
+    <h2>Predicted Soil Type: {{ predicted_class }}</h2>
+    <img
+      src="{{ url_for('static', filename='image/'+ image_path) }}"
+      alt="Uploaded Image"
+    />
+    <a href="/">Classify Another Image</a>
+  </body>
+</html>

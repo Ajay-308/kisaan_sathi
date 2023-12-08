@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Predict Crop</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #fff;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        text-align: center;
+        padding: 20px;
+        margin-top: 8rem;
+        font-size: 3rem;
+      }
+      .container {
+        height: 64%;
+        margin-top: 20px;
+        width: 80%;
+      }
+      .container form {
+        width: 80%;
+        margin-left: 13rem;
+      }
+
+      form {
+        background-color: #66bb6a;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        margin: 0 auto;
+        box-shadow: 12px 12px 2px 1px #eaf8da;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      input[type="text"] {
+        width: 94%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      button[type="submit"] {
+        display: block;
+        width: 100%;
+        background-color: #f3fde8;
+        color: black;
+        font-weight: bold;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      h2 {
+        margin-top: 20px;
+        text-align: center;
+      }
+      .logo {
+        height: 100px;
+        width: 100px;
+        /* display: flex;
+        flex-direction: row; */
+      }
+      .container-1 {
+        display: flex;
+        flex-direction: row;
+        height: 10vh;
+        margin: auto;
+        width: 100%;
+      }
+      .container-1 h1 {
+        margin-left: 25rem;
+        margin-top: 30px;
+      }
+      .svg img {
+        padding: 2rem;
+      }
+      .description {
+        font-style: italic;
+        max-width: 80vw;
+        margin-left: 5rem;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-1">
+      <a href="{{ url_for('home')}}"
+        ><img
+          class="logo"
+          src="{{ url_for('static', filename='image/windmill.gif') }}"
+          alt=""
+      /></a>
+      <h1>Trade Value Predictor</h1>
+    </div>
+    <div class="svg">
+      <img
+        src="{{ url_for('static', filename='image/trade.png') }}"
+        alt="air_index"
+        style="
+          display: block;
+          margin: 0 auto;
+          margin-top: 5px;
+          max-height: 15rem;
+          z-index: -1;
+        "
+      />
+    </div>
+    <div class="container">
+      <form method="POST" action="/predict_tradingvalue">
+        <label for="Element">Element:</label>
+        <input type="text" name="Element" required /><br />
+
+        <label for="Item">Item:</label>
+        <input type="text" name="Item" required /><br />
+
+        <label for="Year">Year:</label>
+        <input type="text" name="Year" required /><br />
+
+        <label for="Unit">Unit:</label>
+        <input type="text" name="Unit" required /><br />
+
+        <button type="submit">Predict</button>
+      </form>
+    </div>
+    <div class="description">
+      <h1>Features Description</h1>
+      <p>
+        <h3>Elements </h3>= {0: 'Export Quantity', 1: 'Export Value', 2: 'Import
+        Quantity', 3: 'Import Value', 4: 'Production'}
+      </p>
+      <br />
+      <p>
+        <h3>Items</h3>= {0: 'Cartonboard', 1: 'Case materials', 2: 'Chemical wood pulp',
+        3: 'Chemical wood pulp, sulphate, bleached', 4: 'Chemical wood pulp,
+        sulphate, unbleached', 5: 'Chemical wood pulp, sulphite', 6: 'Chemical
+        wood pulp, sulphite, bleached', 7: 'Chemical wood pulp, sulphite,
+        unbleached', 8: 'Dissolving wood pulp', 9: 'Fibreboard, compressed
+        (1961-1994)', 10: 'Hardboard', 11: 'Household and sanitary papers', 12:
+        'Industrial roundwood, coniferous (export/import)', 13: 'Industrial
+        roundwood, non-coniferous non-tropical (export/import)', 14: 'Industrial
+        roundwood, non-coniferous tropical (export/import)', 15: 'MDF/HDF', 16:
+        'Mechanical and semi-chemical wood pulp', 17: 'Mechanical wood pulp',
+        18: 'Newsprint', 19: 'OSB', 20: 'Other fibreboard', 21: 'Other
+        industrial roundwood, all species (export/import, 1961-1989)', 22:
+        'Other industrial roundwood, coniferous (production)', 23: 'Other
+        industrial roundwood, non-coniferous (production)', 24: 'Other paper and
+        paperboard', 25: 'Other paper and paperboard n.e.s. (not elsewhere
+        specified)', 26: 'Other papers mainly for packaging', 27: 'Particle
+        board', 28: 'Particle board and OSB (1961-1994)', 29: 'Plywood', 30:
+        'Printing and writing papers', 31: 'Printing and writing papers,
+        coated', 32: 'Printing and writing papers, uncoated, mechanical', 33:
+        'Printing and writing papers, uncoated, wood free', 34: 'Pulp from
+        fibres other than wood', 35: 'Pulpwood and particles, coniferous
+        (production, 1961-1997)', 36: 'Pulpwood and particles, non-coniferous
+        (production, 1961-1997)', 37: 'Pulpwood, round and split, all species
+        (export/import, 1961-1989)', 38: 'Pulpwood, round and split, coniferous
+        (production)', 39: 'Pulpwood, round and split, non-coniferous
+        (production)', 40: 'Recovered fibre pulp', 41: 'Recovered paper', 42:
+        'Sawlogs and veneer logs, coniferous', 43: 'Sawlogs and veneer logs,
+        non-coniferous', 44: 'Sawnwood, coniferous', 45: 'Sawnwood,
+        non-coniferous all', 46: 'Semi-chemical wood pulp', 47: 'Veneer sheets',
+        48: 'Wood briquettes and other agglomerates', 49: 'Wood charcoal', 50:
+        'Wood chips and particles', 51: 'Wood fuel, all species (export/import,
+        1961-2016)', 52: 'Wood fuel, coniferous', 53: 'Wood fuel,
+        non-coniferous', 54: 'Wood pellets', 55: 'Wood residues', 56: 'Wrapping
+        and packaging paper and paperboard (1961-1997)', 57: 'Wrapping papers'}
+      </p>
+      <br />
+      <p><h3>Units</h3> = {'1000 USD':0 ,'t':1 ,'m3' :2}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const output = "{{ trading_output | safe }}";
+        if (output !== "") {
+          Swal.fire({
+            title: "Trading Prediction",
+            text: `Trading ${output}`,
+            icon: "success",
+            confirmButtonText: "OK",
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

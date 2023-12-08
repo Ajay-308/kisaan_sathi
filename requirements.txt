@@ -1,0 +1,8 @@
+Flask==2.2.3
+numpy
+opencv_contrib_python==4.8.0.74
+Pillow==9.4.0
+tensorflow
+Werkzeug
+scikit-learn
+waitress

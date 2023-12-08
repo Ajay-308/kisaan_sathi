@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <title>Kisan Sathi</title>
+  </head>
+  <body>
+    <header>
+      <nav class="header__nav w-120">
+        <div class="header__logo">
+          <img src="{{ url_for('static', filename='image/windmill.gif') }}" alt="">
+
+        </div>
+        <div class="header__nav__content">
+          <div class="nav-close-icon"></div>
+          <ul class="header__menu">
+            <li class="menu__item">
+              <a href="#" class="menu__link active">Home</a>
+            </li>
+            <li class="menu__item">
+              <a href="#features" class="menu__link">Features</a>
+            </li>
+
+            <li class="menu__item">
+              <a href="#contact" class="menu__link">Contact</a>
+            </li>
+          </ul>
+        </div>
+
+      </nav>
+    </header>
+    <section class="hero w-120">
+      <div class="hero__content">
+        <div class="hero__text">
+          <h1 class="hero__title">Kisan Sathi</h1>
+          <p class="hero__description">
+            One stop solution for your all farming problems !
+          </p>
+          <p class="hero__description">Empowering Farmers, Cultivating Solutions: Your Companion on the Journey, Kisan Sathi</p>
+
+          <a href="https://drive.google.com/file/d/1Ydrpt9in5n1D1URNCdOWQPpiSa4-Oj-t/view?usp=drivesdk" class="btn btn__hero use">How to use </a>
+        </div>
+        <div class="hero__img">
+          <img src="{{ url_for('static', filename='image/man.png') }}" alt="" />
+        </div>
+      </div>
+    </section>
+
+
+    <!-- features  -->
+    <section class="opportunities" id="features">
+
+        <div class="opportunities__content w-105">
+            <div class="opportunities__head">
+                <h2 class="opportunities__title">Our features</h2>
+                <p class="opportunities__description">We provides AI driven tools , that helps farmer to grow crops according to thier environment conditions.</p>
+                
+            </div>
+            <div class="opportunities__body">
+                <div class="opportunity">
+                    <img src="{{ url_for('static', filename='image/crop.png') }}" alt="" class="crop_img">
+  
+                    <h4 class="opportunity__title">Crop recommendation</h4>
+                    <p class="opportunity__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, ea mollitia. Neque reprehenderit nisi omnis repellendus libero alias, amet fuga.</p>
+                    <a href="{{url_for('croprecommendation')}}" class="btn btn__hero">Check </a>
+                    
+                </div>
+
+                <div class="opportunity active">
+                    <img src="{{ url_for('static', filename='image/soil.png') }}" alt="Icon" class="opportunity__icon">
+                    <h4 class="opportunity__title">Soil recommendation</h4>
+                    <p class="opportunity__description">
+                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                    </p>
+                    <a href="{{url_for('soiltype')}}" class="btn btn__hero">Check </a>
+
+                </div>
+                <div class="opportunity">
+                    <img src="{{ url_for('static', filename='image/fertilizer.png') }}" alt="Icon" class="opportunity__icon">
+                    <h4 class="opportunity__title">Fertiliser Prediction
+                    </h4>
+                    <p class="opportunity__description">
+                        At vero eos et accusamus et iusto odio praesentium atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia
+                    </p>
+                    <a href="{{url_for('fertilizer')}}" class="btn btn__hero">Check </a>
+                </div>
+                <div class="opportunity active">
+                    <img src="{{ url_for('static', filename='image/Trade.png') }}" alt="Icon" class="opportunity__icon">
+                    <h4 class="opportunity__title">Check trading Value</h4>
+                    <p class="opportunity__description">
+                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                    </p>
+                    <a href="{{url_for('croptrade')}}" class="btn btn__hero">Check </a>
+                </div>
+                <div class="opportunity">
+                    <img src="{{ url_for('static', filename='image/air-pollution.png') }}" alt="Icon" class="opportunity__icon">
+                    <h4 class="opportunity__title">Check Air Quality
+                    </h4>
+                    <p class="opportunity__description">
+                        At vero eos et accusamus et iusto odio praesentium atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia
+                    </p>
+                    <a href="{{url_for('airquality')}}" class="btn btn__hero">Check </a>
+                </div>
+                <div class="opportunity active">
+                    <img src="{{ url_for('static', filename='image/agriculture.png') }}" alt="Icon" class="opportunity__icon">
+                    <h4 class="opportunity__title">Crop disease prediction</h4>
+                    <p class="opportunity__description">
+                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                    </p>
+                    <a href="{{url_for('cropdisease')}}" class="btn btn__hero">Check </a>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- footer beggins here  -->
+
+    <footer class="footer" id="contact">
+      <div class="footer__body w-105">
+        <nav class="footer__nav">
+          <ul class="footer_nav__menu">
+            <li class="footer_nav__item">
+              <h4 class="footer_nav__menu__title">COMPANY</h4>
+            </li>
+            <li class="footer_nav__item">
+              <a href="#" class="footer_nav__link">About Us</a>
+            </li>
+            <li class="footer_nav__item">
+              <a href="#" class="footer_nav__link">Team</a>
+            </li>
+
+            <li class="footer_nav__item">
+              <a href="#" class="footer_nav__link">location</a>
+            </li>
+          </ul>
+          <ul class="footer_nav__menu">
+            <li class="footer_nav__item">
+              <h4 class="footer_nav__menu__title">CONTACT US</h4>
+            </li>
+            <li class="footer_nav__item">
+              <a href="#" class="footer_nav__link"><i class="fa-solid fa-phone"></i>+919999668888</a>
+            </li>
+            <li class="footer_nav__item">
+              <a href="#" class="footer_nav__link"><i class="fa-brands fa-facebook"></i>  kisan_sathi01</a>
+            </li>
+            <li class="footer_nav__item">
+              <a href="#" class="footer_nav__link"><i class="fa-brands fa-whatsapp"></i>+911234565432</a>
+            </li>
+          </ul>
+          <ul class="footer_nav__menu">
+            <li class="footer_nav__item">
+              <h4 class="footer_nav__menu__title">LEGAL</h4>
+            </li>
+            <li class="footer_nav__item">
+              <a href="#" class="footer_nav__link">Privacy</a>
+            </li>
+            <li class="footer_nav__item">
+
+              <a href="#" class="footer_nav__link">Terms</a>
+            </li>
+            <li class="footer_nav__item">
+              <a href="#" class="footer_nav__link">Security</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="footer__contact">
+          <h5 class="footer__contact__title">Kisan Sathi</h5>
+          <span>Write email to us</span>
+          <a href="mailto:kisansathi@gmail.com" class="email">kisansathi@gmail.com</a>
+
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <div class="footer__bottom__content w-105">
+
+          <p class="footer_copyright">
+           developed by team ML_troop
+          </p>
+        </div>
+
+    </footer>
+
+
+  </body>
+</html>

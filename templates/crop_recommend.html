@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Recommend Crop</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #fff;
+        margin: 0;
+        padding: 0;
+        /* opacity: 0.7; */
+      }
+
+      h1 {
+        text-align: center;
+        padding: 20px;
+        /* margin-top: 1rem; */
+        font-size: 3rem;
+        text-align: center;
+        margin-left: 25rem;
+      }
+      .container {
+        height: 64%;
+        /* margin-top: 50px; */
+        width: 60rem;
+        flex-basis: 100%;
+      }
+      .container form {
+        margin-left: 22rem;
+        width: 80%;
+      }
+
+      form {
+        background-color: #66bb6a;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        /* margin: 0 auto; */
+        box-shadow: 12px 12px 2px 1px #eaf8da;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      input[type="text"] {
+        width: 94%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      button[type="submit"] {
+        display: block;
+        width: 100%;
+        background-color: #f3fde8;
+        color: black;
+        font-weight: bold;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      h2 {
+        margin-top: 20px;
+        text-align: center;
+      }
+      .svg {
+        text-align: center;
+        position: relative;
+        margin-top: 20px;
+        align-content: center;
+        display: block;
+        justify-content: center !important;
+
+        /* z-index: -1 !important; */
+      }
+      .svg image {
+        height: 5%;
+      }
+      .logo {
+        height: 80px;
+        width: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="{{ url_for('home')}}"
+      ><img
+        class="logo"
+        src="{{ url_for('static', filename='image/windmill.gif') }}"
+        alt=""
+    /></a>
+
+    <div class="svg">
+      <img
+        src="{{ url_for('static', filename='image/field.png') }}"
+        alt="air_index"
+        style="
+          display: block;
+          margin: 0 auto;
+          margin-top: 5px;
+          max-height: 15rem;
+          /* z-index: -1; */
+        "
+      />
+    </div>
+
+    <div class="container">
+      <h1>Recommend Crop</h1>
+      <form method="POST" action="/predict_crop">
+        <label for="Nitrogen">Nitrogen:</label>
+        <input type="text" name="Nitrogen" required /><br />
+
+        <label for="Phosphorus">Phosphorus:</label>
+        <input type="text" name="Phosphorus" required /><br />
+
+        <label for="Potassium">Potassium</label>
+        <input type="text" name="Potassium" required /><br />
+
+        <label for="temperature">temperature:</label>
+        <input type="text" name="temperature" required /><br />
+        <label for="humidity">humidity:</label>
+        <input type="text" name="humidity" required /><br />
+        <label for="Ph">Ph:</label>
+        <input type="text" name="Ph" required /><br />
+        <label for="Rainfall">Rainfall:</label>
+        <input type="text" name="Rainfall" required /><br />
+
+        <button type="submit">Predict</button>
+      </form>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const output = "{{ crop_output | safe }}";
+        if (output !== "") {
+          Swal.fire({
+            title: "Crop Recommendation",
+            text: `Recommended Crop: ${output}`,
+            icon: "success",
+            confirmButtonText: "OK",
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
